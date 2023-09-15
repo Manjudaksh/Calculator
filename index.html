@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato&family=Libre+Baskerville&family=Lobster&family=PT+Serif:ital,wght@1,700&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="Container">
+        <div class="Calculator">
+            <input id="screen" type="text" placeholder="0" >
+        </div>
+        <div class="btns">
+            <div class="c">
+                <div class="row">
+                    <div class="r">
+                        <button id="ce" onclick="backspc()">CE</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">In</button>                    
+                    </div>
+                    <div class="r">
+                        <button id="ac" onclick="screen.value=''">AC</button>  
+                    </div>                      
+                </div>
+                <div class="row">
+                    <div class="r">
+                        <button onclick="pow()">x<span style="position: relative; bottom: .4em; right: .1em;">2</span></button>                    
+                    </div>
+                    <div class="r">
+                        <button onclick="pow2()">x<span style="position: relative; bottom: .4em; right: .1em;">3</span></button>                    
+                    </div>
+                    <div class="r">
+                        <button class="btn">÷</button>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="r">
+                        <button onclick="sin()">sin</button>                    
+                    </div>
+                    <div class="r">
+                        <button onclick="asin()">asin</button>                    
+                    </div>
+                    <div class="r">
+                        <button class="btn">%</button>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="r">
+                        <button onclick="cos()">cos</button>                    
+                    </div>
+                    <div class="r">
+                        <button onclick="acos()">acos</button>                    
+                    </div>
+                    <div class="r">
+                        <button onclick="pi()">π</button>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="r">
+                        <button onclick="tan()">tan</button>
+                    </div>
+                    <div class="r">
+                        <button onclick="atan()">atan</button>
+                    </div>
+                    <div class="r">
+                        <button onclick="log()">log</button> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="r">
+                        <button onclick="e()">e</button>
+                    </div>
+                    <div class="r">
+                        <button onclick="cbrt()">3√</button>
+                    </div>
+                    <div class="r">
+                        <button onclick="sqrt()">√</button>  
+                    </div>
+                </div>
+            </div>
+            <div class="c">
+                <div class="row">
+                    <div class="r">
+                        <button class="btn">(</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">)</button>
+                    </div>
+                    <div class="r">
+                        <button onclick="fact()">x!</button>
+                    </div>
+                </div>
+                <div class="row">  
+                    <div class="r">
+                        <button class="btn">x</button>
+                    </div>
+                    <div class="r"> 
+                        <button class="btn">-</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">+</button>    
+                    </div>                  
+                </div>
+                <div class="row"> 
+                    <div class="r">
+                        <button class="btn">7</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">8</button>                   
+                    </div>
+                    <div class="r">
+                        <button class="btn">9</button> 
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="r">
+                        <button class="btn">4</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">5</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">6</button> 
+                    </div>                    
+                </div>
+                <div class="row">     
+                    <div class="r">
+                        <button class="btn">1</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">2</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">3</button>
+                    </div>                                  
+                </div>
+                <div class="row">   
+                    <div class="r">
+                        <button class="btn">0</button>
+                    </div>
+                    <div class="r">
+                        <button class="btn">.</button>
+                    </div>
+                    <div class="r">
+                        <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
+                    </div>
+                </div>
+            </div>            
+        </div>        
+    </div>    
+</body>
+
+
+<!-- //////////////////////////////JavaScript////////////////////////////// -->
+<script>
+    var screen=document.querySelector('#screen');
+    var btn=document.querySelectorAll('.btn');
+
+    for(item of btn){
+
+        item.addEventListener('click',(e)=>{
+            btntext=e.target.innerText;
+            if(btntext=='x')
+            {
+                btntext='*';
+            }
+            if(btntext=='÷')
+            {
+                btntext='/';
+            }
+            if(btntext === "=" && btntext !== "") {
+                
+            }
+            screen.value+=btntext;
+        });
+    }
+    function sin() {
+        screen.value = Math.sin(screen.value * Math.PI / 180);
+    }
+    function invsine() {
+        screen.value = Math.asin(screen.value * (180 / Math.PI));
+    }
+    function cos() {
+        screen.value = Math.cos(screen.value * Math.PI / 180);
+    }
+    function invcosine() {
+        screen.value = Math.acos(screen.value * (180 / Math.PI));
+    }
+    function tan() {
+        screen.value = Math.tan(screen.value * Math.PI / 180);
+    }
+    function invtan() {
+        screen.value = Math.atan(screen.value * (180 / Math.PI));
+    }
+    function pow() {
+        screen.value = Math.pow(screen.value, 2);
+    }
+    function sqrt() {
+        screen.value = Math.sqrt(screen.value, 2);
+    }
+    function pow2() {
+        screen.value = Math.pow(screen.value, 3);
+    }
+    function cbrt() {
+        screen.value = Math.cbrt(screen.value, 3);
+    }
+    function In() {
+        screen.value = Math.log(screen.value);
+    }
+    function log() {
+        screen.value = Math.log10(screen.value);
+    }
+    function pi() {
+        screen.value = 3.14159265359;
+    }
+    function e() {
+        screen.value =  2.71828182846;
+    }
+    function percent(){
+        screen.value = (screen.value / 100)
+    }
+    function fact() {
+        var i, num, f;
+        f = 1;
+        num = screen.value;
+        for(i = 1; i <= num; i++){
+            f = f * i;
+        }
+        screen.value = f;
+    }
+
+    function backspc() {
+        screen.value = screen.value.substr(0, screen.value.length - 1);
+    }
+</script>
+</html>
